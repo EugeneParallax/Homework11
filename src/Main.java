@@ -48,25 +48,33 @@ public class Main {
 
     public static void task3() {
         short deliveryDistance = 95;
-        calculateDeliveryTime(deliveryDistance);
+        int deliveryTime = calculateDeliveryTime(deliveryDistance);
+
+        if (deliveryTime < 0) {
+            System.out.println("Доставка в пределах свыше 100км не производится");
+        } else {
+            System.out.println("На доставку потребуется дней: " + deliveryTime);
+        }
     }
 
-    public static void calculateDeliveryTime(short dist) {   // Procedure imported from Homework5 - Task 4
+    public static int calculateDeliveryTime(short dist) {   // Procedure imported from Homework5 - Task 4
+
         if (dist > 100) {
-            System.out.println("Доставка на расстояние свыше 100км недоступна");
+            return -1;
         } else {
 
-            byte deliveryDuration = 1;
+            int time = 1;
             if (dist > 20) {
 
-                deliveryDuration++;
+                time++;
                 if (dist > 60) {
 
-                    deliveryDuration++;
+                    time++;
                 }
 
             }
-            System.out.println("Потребуется дней: " + deliveryDuration);
+            return time;
         }
+
     }
 }
